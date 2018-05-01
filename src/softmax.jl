@@ -65,8 +65,8 @@ function build_huffman_tree{Tf <: Number}(freqs::Array{Tf})
 		freq = pop_initialize!(L, true) + pop_initialize!(L, false)
 		heappush!(heap, (node, freq), freq_ord)
 	end
-	println(length(heap))
-	#@assert length(heap) == 1
+	#println(length(heap))
+	@assert length(heap) == 1
 
 	return nodes
 end
