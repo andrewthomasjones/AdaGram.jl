@@ -153,7 +153,7 @@ function inplace_train_vectors!(vm::VectorModel, dict::Dictionary, path::Abstrac
 	refs = Array{Future}(nworkers())
 
 	for i in 1:nworkers()
-		refs[i] = remotecall(i+1, do_work, i)
+		refs[i] = remotecall(do_work, i+1,  i)
 	end
 
 	for i in 1:nworkers()
