@@ -16,7 +16,7 @@ echo "Current DIR: $DIR"
 echo "Using CC: $CC"
 cd $DIR
 mkdir -p ./lib
-$CC -std=c99 -march=native -dynamiclib ./csrc/learn.c -O3 -lm -o ./lib/superlib.dylib
+$CC -std=c99 -march=native -shared -dynamiclib ./csrc/learn.c -O3 -lm -o ./lib/superlib.dylib
 
 
 
