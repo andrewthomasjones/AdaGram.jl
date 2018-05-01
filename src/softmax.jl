@@ -1,5 +1,5 @@
 using Base.Collections
-using Base.Order
+using DataStructures.Order
 
 type HierarchicalSoftmaxNode
 	parent::Int32
