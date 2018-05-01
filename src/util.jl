@@ -1,8 +1,8 @@
 function read_from_file(vocab_path::AbstractString, min_freq::Int64=0, stopwords::Set{AbstractString}=Set{AbstractString}();
 		regex::Regex=r"")
 	fin = open(vocab_path)
-	freqs = Array(Int64, 0)
-	id2word = Array(AbstractString, 0)
+	freqs = Array{Int64}(0)
+	id2word = Array{AbstractString}(0)
 	while !eof(fin)
 		try
 			word, freq = split(readline(fin))
@@ -54,7 +54,7 @@ function read_word2vec(path::AbstractString)
 	M = parse(Int64, line[2])
 
 	In = zeros(Float32, M, V)
-	id2word = Array(AbstractString, 0)
+	id2word = Array{AbstractString}(0)
 
 	for v in 1:V
 		word = readuntil(fin, ' ')[1:end-1]
@@ -136,7 +136,7 @@ function load_model(path::AbstractString)
 
 	buffer = zeros(Float32, M(vm))
 
-	id2word = Array(AbstractString, 0)
+	id2word = Array{AbstractString}(0)
 	for v in 1:V(vm)
 		word = strip(readline(file))
 		nsenses = parse(Int, readline(file))
@@ -157,7 +157,7 @@ end
 
 function preprocess(vm::VectorModel, doc::Array{Int32}; min_freq::Int64=5,
 	subsampling_treshold::Float64 = 1e-5)
-	data = Array(Int32, 0)
+	data = Array{Int32}(0)
 	total_freq = sum(vm.frequencies)
 
 	for i in 1:length(doc)
@@ -203,7 +203,7 @@ function nearest_neighbors(vm::VectorModel, dict::Dictionary, word::DenseArray{T
 	for (v, s) in exclude
 		sim[s, v] = -Inf
 	end
-	top = Array(Tuple{Int, Int}, K)
+	top = Array{Tuple{Int, Int}}(K)
 	topSim = zeros(Tsf, K)
 
 	function split_index(sim, i)
@@ -250,7 +250,7 @@ function disambiguate{Tw <: Integer}(vm::VectorModel, x::Tw,
 	end
 
 	exp_normalize!(z)
-	
+
 	return z
 end
 
