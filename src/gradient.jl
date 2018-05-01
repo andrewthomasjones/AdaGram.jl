@@ -1,4 +1,5 @@
 import Base.BLAS.axpy!
+using Base.Distributed
 
 function inplace_train_vectors!(vm::VectorModel, doc::DenseArray{Tw},
 		window_length::Int,
