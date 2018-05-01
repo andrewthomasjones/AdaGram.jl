@@ -40,7 +40,6 @@ addprocs(args["workers"])
 # require("AdaGram.jl")
 
 using AdaGram
-using DataStructures
 
 vm, dict = load_model(args["model"])
 println(parallel_likelihood(vm, dict, args["text"], args["window"], args["minprob"];

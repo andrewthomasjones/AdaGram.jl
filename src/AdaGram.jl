@@ -1,6 +1,6 @@
 module AdaGram
 
-using ArrayViews
+#using ArrayViews
 using Devectorize
 
 sigmoid(x) = 1. / (1. + exp(-x))

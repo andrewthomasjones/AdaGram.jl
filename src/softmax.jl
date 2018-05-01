@@ -1,6 +1,5 @@
 
-using DataStructures.Order
-using DataStructures.Collections
+using DataStructures
 
 #using Base.Collections
 #using Base.Order
