@@ -43,7 +43,7 @@ function inplace_train_vectors!(vm::VectorModel, doc::DenseArray{Tw},
 
 			total_ll[2] += 1
 			total_ll[1] += (ll - total_ll[1]) / total_ll[2]
-			
+
 		end
 
 		words_read[1] += 1
@@ -149,7 +149,8 @@ function inplace_train_vectors!(vm::VectorModel, dict::Dictionary, path::Abstrac
 		close(file)
 	end
 
-	refs = Array(RemoteRef, nworkers())
+	refs = Array{Future}(nworkers())
+
 	for i in 1:nworkers()
 		refs[i] = remotecall(i+1, do_work, i)
 	end
