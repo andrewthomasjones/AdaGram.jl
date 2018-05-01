@@ -1,3 +1,5 @@
+using SpecialFunctions
+
 mean_beta(a, b) = a / (a + b)
 meanlog_beta(a, b) = digamma(a) - digamma(a + b)
 mean_mirror(a, b) = mean_beta(b, a)
@@ -24,9 +26,9 @@ function expected_logpi!{Tw <: Integer}(pi::Vector{Float64}, vm::VectorModel, w:
 	pi[T(vm)] = r
 	if x >= min_prob senses += 1 end
 	return senses
-end 
+end
 
-function expected_pi!{Tw <: Integer}(pi::Vector{Float64}, vm::VectorModel, 
+function expected_pi!{Tw <: Integer}(pi::Vector{Float64}, vm::VectorModel,
 		w::Tw, min_prob=1e-3)
 	r = 1.
 	senses = 0
