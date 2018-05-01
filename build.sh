@@ -16,10 +16,13 @@ echo "Current DIR: $DIR"
 echo "Using CC: $CC"
 cd $DIR
 mkdir -p ./lib
+$CC -std=c99 -march=native -dynamiclib ./csrc/learn.c -O3 -lm -o ./lib/superlib.dylib
 
-if [[ `uname` == 'Darwin' ]]; then
-	$CC -std=c99 -march=native -dynamiclib ./csrc/learn.c -O3 -lm -o ./lib/superlib.dylib
-elif [[ `uname` == 'Linux' ]]; then
-	$CC -std=c99 -march=native -shared ./csrc/learn.c -O3 -lm -fPIC -o ./lib/superlib.so
-fi
 
+
+
+
+#if [[ `uname` == 'Darwin' ]]; then
+#elif [[ `uname` == 'Linux' ]]; then
+#$CC -std=c99 -march=native -shared ./csrc/learn.c -O3 -lm -fPIC -o ./lib/superlib.so
+#fi
